@@ -1,2 +1,7 @@
 # Superresolution-NV-Magnetometry
-A quantum-inspired measurement and receiver protocol for performing magnetometry at sub-diffraction scales using nitrogen vacancy centers
+
+### Overview:
+This repository contains a quantum-inspired multi-stage receiver for performing magnetometry at sub-diffraction scales using optically-detected magnetic resonance (ODMR) of nitrogen vacancy color centers in diamond lattices. 
+
+### Getting Started:
+
