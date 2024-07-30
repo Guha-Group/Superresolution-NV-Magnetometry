@@ -18,7 +18,7 @@ function [alpha_opt,cost_opt] = AdaptiveSwitchingOptimization(IMG, ODMR, s)
     cfim_odmr = sum(cfim_odmr,3);
 
     % samples of switching parameter
-    alpha = permute(linspace(0,1,1e3),[1,3,4,2]);
+    alpha = permute(linspace(1e-6,1-1e-6,1e3),[1,3,4,2]);
 
     % get two-stage cfim
     cfim_2stage = alpha.*cfim_spade + (1-alpha).*cfim_odmr;

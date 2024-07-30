@@ -23,4 +23,3 @@ function [I1,I2] = ODMR_2nvFlux(omega, d1, d2, w0, linewidth, eta0, chi)
     I1 = eta0 * (1 - chi/2 * (Lorentzian(omega,-d1) + Lorentzian(omega,+d1)));
     I2 = eta0 * (1 - chi/2 * (Lorentzian(omega,-d2) + Lorentzian(omega,+d2)));
 end
-

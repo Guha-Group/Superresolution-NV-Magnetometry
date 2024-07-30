@@ -25,7 +25,8 @@ function [theta_mle, pho_tot, alpha_opt, schedule_opt] =...
     omega = ODMR.omega;
 
     % temporal time-step
-    dt = integration_time/numel(ODMR.omega); % discrete time steps
+%   dt = integration_time/numel(ODMR.omega); % discrete time steps
+    dt = integration_time/50; % discrete time steps
     t = 0;                      % initialize clock
 
     %% STAGE 1: SPADE
@@ -86,19 +87,19 @@ function [theta_mle, pho_tot, alpha_opt, schedule_opt] =...
         schedule_opt = schedule;
     else
         
-        X = zeros([numel(omega,numel(x))]); % container for direct imaging measurements
+        X = zeros([numel(omega),numel(x)]); % container for direct imaging measurements
         omega_id_t = 1;                     % adaptive drive frequency index
         omega_id = [];
     
         while (t < integration_time)
     
             % collect measurement at time interval
-            X_t = SimulateMeasurement(P2, eta2(omega_id_t)*dt);
+            X_t = SimulateMeasurement(P2(omega_id_t,:), eta2(omega_id_t)*dt);
     
             if any(X_t>0,"all")
     
                 % add measurement to cumulative stage 2 measurements
-                X = X + X_t;
+                X(omega_id_t,:) = X(omega_id_t,:) + X_t;
     
                 % estimate parameters
                 theta_hat = TWOSTAGE_MLE(Q,q,X,x,IMG,ODMR);
