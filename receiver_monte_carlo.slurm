@@ -4,13 +4,13 @@
 ### use standard partition to get priority. Otherwise use windfall
 #SBATCH --partition=standard
 ### Time allowed for job.
-#SBATCH --time=00-96:00:00
+#SBATCH --time=00-48:00:00
 ### Number of nodes assigned to EACH JOB. Not the total number of nodes used.
 #SBATCH --nodes=1
 ### number of tasks
 #SBATCH --ntasks=1
 ### number of cpus per task
-#SBATCH --cpus-per-task=12
+#SBATCH --cpus-per-task=94
 ### the name of the job
 #SBATCH --job-name=NV_Receiver_Simulations
 ### memory per CPU
@@ -20,16 +20,15 @@
 ### email the user once job is done
 #SBATCH --mail-user=ndeshler@arizona.edu
 ### setup job array
-#SBATCH --array 1-240
+#SBATCH --array 1-150
 ### output for a job array
-#SBATCH --output=MultiAp_cfg-%a.out
+#SBATCH --output=NV_Receiver-%a.out
 
 #########################
 ### Additional flags ####
 #########################
 ### Request GPU resources. Up to four GPUs may be requested on Puma on a single GPU node with --gres=gpu:1, 2, 3, or 4
 ### SBATCH --gres=gpu:1
-
 
 ####################################
 ### USEFUL ENVIRONMENT VARIABLES ###
@@ -48,4 +47,4 @@
 
 module load matlab
 
-matlab matlab -nodisplay -nosplash -batch "ReceiverSimulations($SLURM_ARRAY_TASK_ID,12)" output_{$SLURM_ARRAY_TASK_ID}.txt
+matlab matlab -nodisplay -nosplash -batch "ReceiverSimulations($SLURM_ARRAY_TASK_ID,94)" output_{$SLURM_ARRAY_TASK_ID}.txt
