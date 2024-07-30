@@ -47,4 +47,4 @@
 
 module load matlab
 
-matlab matlab -nodisplay -nosplash -batch "ReceiverSimulations($SLURM_ARRAY_TASK_ID,94)" output_{$SLURM_ARRAY_TASK_ID}.txt
+matlab matlab -nodisplay -nosplash -batch "ReceiverSurvey($SLURM_ARRAY_TASK_ID,94)" output_{$SLURM_ARRAY_TASK_ID}.txt
