@@ -25,8 +25,7 @@ function [theta_mle, pho_tot, alpha_opt, schedule_opt] =...
     omega = ODMR.omega;
 
     % temporal time-step
-%   dt = integration_time/numel(ODMR.omega); % discrete time steps
-    dt = integration_time/50; % discrete time steps
+    dt = integration_time/numel(ODMR.omega); % discrete time steps
     t = 0;                      % initialize clock
 
     %% STAGE 1: SPADE
@@ -49,9 +48,10 @@ function [theta_mle, pho_tot, alpha_opt, schedule_opt] =...
             % estimate the separation
             s_hat = SPADE_MLE(Q,q,sigma);
 
-            % add a little bias to the estimator to avoid div by 0s
+            % snap estimator to nearest non-zero estimate if no photons
+            % appear in higher-order modes.
             if s_hat == 0
-                s_hat = 1e-6*rand(1)*IMG.sigma;
+                s_hat = 4 * IMG.sigma * sqrt(1/(sum(Q)+1));
             end
 
             % optimze cost function to get alpha_t
