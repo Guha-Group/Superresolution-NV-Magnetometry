@@ -2,7 +2,7 @@ function DS = DSformat()
     % consruct a data object format for running and storing Monte-Carlos
     
     % save directory
-    save_dir = fullfile('Data','BGradientMC_July31');
+    save_dir = fullfile('Data','BGradientMC_Aug8');
 
     % imager details
     sigma = 1;              % Rayliegh limit
@@ -28,7 +28,7 @@ function DS = DSformat()
     epsilon = 1e-8;             % a small constant
 
     %%%%%%%% MONTE-CARLO PARAMETER SWEEPS %%%%%%%%
-    receiver_names={'ODMR','Static 2-Stage','Adaptive 2-Stage'};
+    receiver_names={'ODMR','Static 2-Stage','Adaptive 2-Stage','Adaptive Scheduling'};
     trials = 1000;     % number of Monte-carlo trials per configuration
     s = .01*sigma;     % NV separation
     beta = 10.^linspace(-2,2,50);                   % magnetic field gradient scaling
