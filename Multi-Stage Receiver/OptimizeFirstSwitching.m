@@ -17,7 +17,7 @@ function [n1_opt,s_var,s_D_var,s_B_var] = OptimizeFirstSwitching(s,N_pho,n1_samp
 
     % calculate ML estimator variance for BSPADE (stage 2)
     s_B_var = inf(size(n1));      % container for separation estimator variance under BSPADE measurements
-    for j=1:(numel(n1)-1)
+    parfor j=1:(numel(n1)-1)
         s_B_var(j) = BSPADE_Variance(s,n1(j),n2(j),sigma);
     end
 

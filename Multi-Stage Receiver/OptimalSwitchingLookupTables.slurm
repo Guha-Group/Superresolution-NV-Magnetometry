@@ -20,7 +20,7 @@
 ### email the user once job is done
 #SBATCH --mail-user=ndeshler@arizona.edu
 ### setup job array
-#SBATCH --array 1-150
+#SBATCH --array 1
 ### output for a job array
 #SBATCH --output=NV_Receiver-%a.out
 
@@ -47,4 +47,4 @@
 
 module load matlab
 
-matlab matlab -nodisplay -nosplash -batch "ReceiverSurvey($SLURM_ARRAY_TASK_ID,94)" output_{$SLURM_ARRAY_TASK_ID}.txt
+matlab matlab -nodisplay -nosplash -batch "BuildOptimalSwitchingLookupTable" output_{$SLURM_ARRAY_TASK_ID}.txt
