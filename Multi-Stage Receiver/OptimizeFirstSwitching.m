@@ -3,7 +3,7 @@ function [n1_opt,s_var,s_D_var,s_B_var] = OptimizeFirstSwitching(s,N_pho,n1_samp
     % 
     % s             : half-separation of the sources
     % N_pho         : total number of photons available for first and second stages
-    % n1_samples    : granularity of n1 sampling for search. Minimum switching fraction is constrainted to n1_samples/N_pho
+    % n1_samples    : granularity of n1 sampling for search. Minimum switching fraction is constrainted to 1/n1_samples
     % sigma         : diffraction limit
     
     assert(n1_samples <= N_pho) % make sure we cannot sub-sample the photons allocated to stage 1
