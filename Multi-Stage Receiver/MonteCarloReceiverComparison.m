@@ -21,7 +21,7 @@ pho_step = 100;
 num_mc_trials = 1e4;
 PARAM_EST = zeros(3,2,numel(KAPPA),numel(S),num_mc_trials);
 
-parpool(96)
+parpool(94)
 for m1 = 1:numel(KAPPA)
     
     % assign parameter value
